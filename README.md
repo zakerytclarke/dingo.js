@@ -1,2 +1,3 @@
 # dingo.js
-A versatile web framework
+A Versatile Web Framework
+https://dingojs.github.io/
