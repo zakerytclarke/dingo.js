@@ -1,5 +1,5 @@
 console.log("Dingo.js v0.8");
-console.log("MIT License 2018")
+console.log("MIT License 2018");
 
 var ELEMENT=[];
 var STYLE= document.createElement('style')
