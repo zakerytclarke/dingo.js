@@ -1,1 +1,55 @@
 
+elem("body").style.backgroundColor="#efefef";
+addstyle(".material",{overflow:"hidden",position:"absolute","background-color":"#fff",padding:"10px","box-shadow":"0px 0px 20px rgba(0,0,0,0.3)",left:"0%",top:"0%",zIndex:"0"});
+
+function material(id,args){
+  args['className']="material";
+  var elemid=addelem(id,"div",args);
+  var z=elem(id).style.zIndex.replace(/[^\d.-]/g,'');
+  if(z<0){
+    z=0;
+  }
+  if(z>10){
+    z=10;
+  }
+  elem(id).move=function(x,y,z){
+    var px=this.style.left.replace(/[^0-9.]/g, '');
+    var nx=x;
+    var py=this.style.top.replace(/[^0-9.]/g, '');
+    var ny=y;
+    var pz=this.style.zIndex.replace(/[^0-9.]/g, '');
+    var nz=z;
+    var d=0;
+    var elem=this;
+    repeat(move,0,1);
+    function move(){
+
+      d=100;
+      elem.style.left=nx+"%";
+      elem.style.top=ny+"%";
+      elem.style.zIndex=nz;
+      if(z<0){
+        z=0;
+      }
+      if(z>10){
+        z=10;
+      }
+      elem.style["box-shadow"]=z+"px "+z+"px 20px rgba(0,0,0,0.3)";
+    }
+
+
+  }
+  elem(id).transform=function(w,h){
+    var elem=this;
+    repeat(transform,0,1);
+    function transform(){
+      elem.style.width=w+"%";
+      elem.style.height=h+"%";
+    }
+
+
+  }
+  elem(id).style["box-shadow"]=z+"px "+z+"px 20px rgba(0,0,0,0.3)";
+  elem(id).style.transition = "all 2s"
+  return elemid;
+}

@@ -1,0 +1,12 @@
+function savevar(key,value){
+
+}
+function getvar(key){
+
+}
+function writefile(name,file){
+
+}
+function readfile(name){
+
+}

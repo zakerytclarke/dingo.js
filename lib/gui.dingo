@@ -1,0 +1,26 @@
+function landscape(){
+  return (window.innerWidth>window.innerHeight);
+}
+
+function portrait(){
+  return (window.innerWidth<window.innerHeight);
+}
+
+function browserwidth(){
+  return window.innerWidth;
+}
+
+function browserheight(){
+  return window.innerHeight;
+}
+
+
+
+function menu(name,args){
+  addelem(name,"div",{style:{width:"100%","background-color":"blue"}});
+  this.link={};
+  for(var key in args){
+    this.link[key]=addelem(name+key,"a",{innerHTML:key,href:args[key]});
+  }
+
+}

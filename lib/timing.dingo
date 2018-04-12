@@ -1,0 +1,30 @@
+var timeintervals=[];
+
+function delay(func,time){
+  setTimeout(func,time);
+}
+function repeat(func,time,num){
+  for(var i=0;i<num;i++){
+    setTimeout(func,time*i);
+  }
+  //timeintervals[func]=setInterval(func, 3000);
+}
+function wait(func,time){
+  setTimeout(func,time);
+}
+/////////sjakjakak
+function loop(func,time){
+  for(var i=0;i<num;i++){
+    setTimeout(func,time*i);
+  }
+  //timeintervals[func]=setInterval(func, 3000);
+}
+function cancelrepeat(func){
+  clearInterval(timeintervals[func]);
+}
+function date(){
+
+}
+function time(){
+
+}
