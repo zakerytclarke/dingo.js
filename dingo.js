@@ -2,13 +2,13 @@ console.log("Dingo.js v0.8");
 console.log("MIT License 2018");
 
 var ELEMENT=[];
-var STYLE= document.createElement('style')
+var STYLE=document.createElement('style')
 document.body.appendChild(STYLE);
 ELEMENT['body']=document.body;
-document.body.style.boxSizing = "border-box";
+document.body.style.boxSizing="border-box";
 var metaTag=document.createElement('meta');
-metaTag.name = "viewport"
-metaTag.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+metaTag.name="viewport"
+metaTag.content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
 document.getElementsByTagName('head')[0].appendChild(metaTag);
 
 function addelem(id,type,add){
