@@ -1,27 +1,26 @@
-console.log("Dingo.js v0.8");
-console.log("MIT License 2018");
+//Dingo.js v1.0
+//MIT License 2018
 
-var ELEMENT=[];
-var STYLE=document.createElement('style')
+var STYLE= document.createElement('style');
 document.body.appendChild(STYLE);
-ELEMENT['body']=document.body;
-document.body.style.boxSizing="border-box";
+
+
+document.body.style.boxSizing = "border-box";
 var metaTag=document.createElement('meta');
-metaTag.name="viewport"
-metaTag.content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+metaTag.name = "viewport"
+metaTag.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
 document.getElementsByTagName('head')[0].appendChild(metaTag);
 
-function addelem(id,type,add){
+function addelem(type,add){
   if(typeof type==='function'){
     if('style' in add){
     }else{
       add['style']=[];
     }
-    var elemid=type(id,add);
+    var elemid=type(add);
     return elemid;
   }else{
     var args={};
-    args['id']=id;
     args['style']={};
     args['tag']=type;
     for(var key in add){
@@ -32,71 +31,39 @@ function addelem(id,type,add){
     var p;
     parent=args['parent'];
     if(parent!=null&&parent!=""){
-      p=document.getElementById(args['parent']);
+      p=parent;
     }else{
-      p=document.getElementsByTagName("BODY")[0];
+      p=document.body;
     }
-    ELEMENT[id]=document.createElement(args['tag']);
-    ELEMENT[id].setAttribute('id',id);
-    //ELEMENT[id].onclick=args['onclick'];
-    //ELEMENT[id].onmouseover=args['onmouseover'];
-    //ELEMENT[id].ondblclick=args['ondblclick'];
+    elemref=document.createElement(args['tag']);
 
     for(key in args){
-      ELEMENT[id][key]=args[key];
+      elemref[key]=args[key];
     }
 
     if("style" in args){
       for(key in args['style']){
-        ELEMENT[id]['style'][key]=args['style'][key];
+        elemref['style'][key]=args['style'][key];
       }
     }
     if(add!=null){
       if('style' in add){
         for(key in add['style']){
-          ELEMENT[id]['style'][key]=add['style'][key];
+          elemref['style'][key]=add['style'][key];
         }
       }
     }
-    ELEMENT[id].addchild=function(child,type,args){
-      args['parent']=id;
-      ELEMENT[id][child]=addelem(id+":"+child,type,args);
-      return ELEMENT[id][child];
+    elemref.addchild=function(child,type,args){
+      args['parent']=this;
+      elemref[child]=addelem(type,args);
+      return elemref[child];
     }
-    ELEMENT[id].view=function(){console.log(this)};
-    //default settings
+    elemref.view=function(){console.log(this)};
 
-    //ELEMENT[id].style.position="absolute";
-    //ELEMENT[id].style.display="inline-block";
-    //ELEMENT[id].style.overflow="visible";
-
-
-    p.appendChild(ELEMENT[id]);
-    return ELEMENT[id];
+    p.appendChild(elemref);
+    return elemref;
   }
 
-}
-
-function element(id){
-  if(id in ELEMENT){
-    return ELEMENT[id];
-  }else{
-    console.error("Undefined Element:"+id);
-  }
-}
-function ELEMENT(id){
-  if(id in ELEMENT){
-    return ELEMENT[id];
-  }else{
-    console.error("Undefined Element:"+id);
-  }
-}
-function elem(id){
-  if(id in ELEMENT){
-    return ELEMENT[id];
-  }else{
-    console.error("Undefined Element:"+id);
-  }
 }
 
 function addstyle(name,css){
@@ -107,4 +74,16 @@ function addstyle(name,css){
   cout+="}";
   STYLE.innerHTML+=cout;
 }
+function addsrc(url){
+  var script=document.createElement('script');
+  script.type='text/javascript';
+  script.src=url;
+  document.head.appendChild(script);
 
+}
+function addscript(code){
+  var script=document.createElement('script');
+  script.type='text/javascript';
+  script.innerHTML=code;
+  document.head.appendChild(script);
+}
