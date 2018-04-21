@@ -56,7 +56,7 @@ function addelem(type,add){
     elemref.addchild=function(child,type,args){
       args['parent']=this;
       elemref[child]=addelem(type,args);
-      return elemref[child];
+      return elemref;
     }
     elemref.view=function(){console.log(this)};
 
