@@ -14,13 +14,10 @@ function browserheight(){
   return window.innerHeight;
 }
 
+function menu(args){
 
+}
 
-function menu(name,args){
-  addelem(name,"div",{style:{width:"100%","background-color":"blue"}});
-  this.link={};
-  for(var key in args){
-    this.link[key]=addelem(name+key,"a",{innerHTML:key,href:args[key]});
-  }
+function button(args){
 
 }

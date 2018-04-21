@@ -12,12 +12,8 @@ function repeat(func,time,num){
 function wait(func,time){
   setTimeout(func,time);
 }
-/////////sjakjakak
 function loop(func,time){
-  for(var i=0;i<num;i++){
-    setTimeout(func,time*i);
-  }
-  //timeintervals[func]=setInterval(func, 3000);
+  setInterval(func,time);
 }
 function cancelrepeat(func){
   clearInterval(timeintervals[func]);
