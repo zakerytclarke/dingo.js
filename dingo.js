@@ -54,6 +54,7 @@ function addelem(type,add){
       }
     }
     elemref.addchild=function(child,type,args){
+      args['parent']=this;
       this[child]=addelem(type,args);
       return this[child];
     }
