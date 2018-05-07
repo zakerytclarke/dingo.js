@@ -1,7 +1,7 @@
-//Dingo.js v1.0
+//Dingo.js v1.2
 //MIT License 2018
 
-var STYLE= document.createElement('style');
+var STYLE=document.createElement('style');
 document.body.appendChild(STYLE);
 
 
@@ -53,10 +53,15 @@ function addelem(type,add){
         }
       }
     }
-    elemref.addchild=function(child,type,args){
-      args['parent']=this;
-      this[child]=addelem(type,args);
-      return this[child];
+    elemref.addchild=function(type,args){
+      args["parent"]=elemref;
+      if("id" in args){
+        this[args["id"]]=addelem(type,args);
+        return this[args["id"]];
+      }else{
+        return addelem(type,args);
+      }
+
     }
     elemref.view=function(){console.log(this)};
 
