@@ -35,6 +35,7 @@ function addelem(type,add){
     }else{
       p=document.body;
     }
+
     elemref=document.createElement(args['tag']);
 
     for(key in args){
@@ -54,7 +55,7 @@ function addelem(type,add){
       }
     }
     elemref.addchild=function(type,args){
-      args["parent"]=elemref;
+      args["parent"]=this;
       if("id" in args){
         this[args["id"]]=addelem(type,args);
         return this[args["id"]];
