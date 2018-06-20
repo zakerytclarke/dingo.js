@@ -31,11 +31,10 @@ function addelem(type,add){
     var p;
     parent=args['parent'];
     if(parent!=null&&parent!=""){
-      p=parent;
+      p=document.getElementById(parent);
     }else{
       p=document.body;
     }
-
     elemref=document.createElement(args['tag']);
 
     for(key in args){
@@ -92,4 +91,22 @@ function addscript(code){
   script.type='text/javascript';
   script.innerHTML=code;
   document.head.appendChild(script);
+}
+function addhtml(str,parent){
+if(parent==null){
+  parent=document.body;
+  }else{
+    parent=document.getElementById(parent);
+  }
+  parent.innerHTML+=str;
+}
+function addtype(id,str){
+
+}
+function elem(id){
+  return document.getElementById(id);
+}
+function include(file){
+
+
 }
