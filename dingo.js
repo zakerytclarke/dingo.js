@@ -31,11 +31,10 @@ function addelem(type,add){
     var p;
     parent=args['parent'];
     if(parent!=null&&parent!=""){
-      p=parent;
+      p=document.getElementById(parent);
     }else{
       p=document.body;
     }
-
     elemref=document.createElement(args['tag']);
 
     for(key in args){
@@ -55,7 +54,7 @@ function addelem(type,add){
       }
     }
     elemref.addchild=function(type,args){
-      args["parent"]=this;
+      args["parent"]=this.id;
       if("id" in args){
         this[args["id"]]=addelem(type,args);
         return this[args["id"]];
@@ -92,4 +91,28 @@ function addscript(code){
   script.type='text/javascript';
   script.innerHTML=code;
   document.head.appendChild(script);
+}
+function addhtml(str,parent){
+if(parent==null){
+  parent=document.body;
+  }else{
+    parent=document.getElementById(parent);
+  }
+  parent.innerHTML+=str;
+}
+function addtype(id,str){
+
+}
+function elem(id){
+  return document.getElementById(id);
+}
+function include(file){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function(){
+   if (this.readyState==4&&this.status==200){
+     document.write(this.responseText);
+   }
+ };
+ xhttp.open("GET",file,true);
+ xhttp.send();
 }
